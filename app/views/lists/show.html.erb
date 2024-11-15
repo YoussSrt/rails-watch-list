@@ -1,0 +1,42 @@
+<div class="container mt-4">
+
+  <h1 class="mb-4">Explore Your List - <%= @list.name %></h1>
+
+
+  <ul class="list-group mb-4">
+    <% @list.bookmarks.each do |bookmark| %>
+      <li class="list-group-item d-flex flex-column mb-3">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <strong><%= bookmark.movie.title %></strong> - <%= bookmark.comment %>
+          </div>
+
+          <%= link_to "Delete", bookmark_path(bookmark),
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+              class: "btn btn-outline-danger btn-sm text-danger ms-2" %>
+        </div>
+
+        <div class="mt-2">
+          <p><strong>Overview:</strong> <%= bookmark.movie.overview %></p>
+        </div>
+
+        <% if bookmark.movie.poster_url.present? %>
+          <div class="mt-2 mb-2 text-center">
+            <img src="https://image.tmdb.org/t/p/original<%= bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %>" class="img-fluid" style="max-width: 150px;">
+          </div>
+        <% else %>
+          <div class="mt-2 mb-2 text-center">
+            <p>No image available</p>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+    <div class="d-flex gap-2">
+      <%= link_to 'Delete this list', list_path(@list), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+      <%= link_to 'Add a new bookmark', new_list_bookmark_path(@list), class: 'btn btn-primary' %>
+      <%= link_to 'Back to lists', lists_path, class: 'btn btn-outline-success' %>
+    </div>
+
+</div>

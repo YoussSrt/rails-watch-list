@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <h1 class="mb-4 text-center">Add a New Bookmark to <%= @list.name %></h1>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card p-4 shadow-sm">
+        <%= simple_form_for([@list, @bookmark]) do |f| %>
+          <div class="mb-3">
+            <%= f.input :comment, placeholder: "Comment here", input_html: { class: "form-control" } %>
+          </div>
+          <div class="mb-3">
+            <%= f.association :movie, collection: Movie.all, prompt: "Choose a movie", input_html: { class: "form-select" } %>
+          </div>
+          <div class="d-grid gap-2">
+            <%= f.submit "Add Bookmark", class: "btn btn-primary btn-lg" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <%= link_to "Back to list", list_path(@list), class: "btn btn-outline-success" %>
+  </div>
+
+</div>

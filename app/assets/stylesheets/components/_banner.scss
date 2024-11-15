@@ -1,0 +1,22 @@
+.banner {
+  background-image: url('banner_hollywood.png');
+  background-size: cover;
+  background-position: center;
+  height: 300px; /* Ajuste la hauteur selon ton besoin */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column; /* Organiser les éléments en colonne */
+  justify-content: space-between; /* Espacement entre les éléments */
+  align-items: center;
+  text-align: center;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* Superposition semi-transparente */
+  width: 100%; /* Prendre toute la largeur */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Espacer les éléments */
+  height: 100%; /* Hauteur de la bannière */
+}
